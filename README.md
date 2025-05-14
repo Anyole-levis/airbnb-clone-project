@@ -22,5 +22,77 @@ Backend Developer: Responsible for implementing API endpoints, database schemas,
 Database Administrator: Manages database design, indexing, and optimizations.
 DevOps Engineer: Handles deployment, monitoring, and scaling of the backend services.
 QA Engineer: Ensures the backend functionalities are thoroughly tested and meet quality standards.
+# Database Design 
+1. User
+Represents a person using the platform, either as a host or guest.
+
+Key Fields:
+
+id: Unique identifier
+
+name: Full name of the user
+
+email: Email address (unique)
+
+passwordHash: Encrypted password
+
+role: "guest" or "host"
+
+Relationships:
+
+A user can list many properties (if a host)
+
+A user can make many bookings (if a guest)
+
+A user can leave many reviews
+
+A user can receive many payments (if a host)
+
+2. Property
+Represents a listing available for rent.
+
+Key Fields:
+
+id: Unique identifier
+
+title: Name of the listing
+
+description: Detailed information about the property
+
+location: City, country, or coordinates
+
+pricePerNight: Cost per night
+
+Relationships:
+
+A property belongs to one user (host)
+
+A property can have many bookings
+
+A property can have many reviews
+
+3. Booking
+Represents a reservation made by a user.
+
+Key Fields:
+
+id: Unique identifier
+
+userId: ID of the guest
+
+propertyId: ID of the booked property
+
+startDate: Booking start date
+
+endDate: Booking end date
+
+Relationships:
+
+A booking belongs to one user (guest)
+
+A booking is for one property
+
+A booking may have one payment associated
+ 
 
 

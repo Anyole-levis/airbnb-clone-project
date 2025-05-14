@@ -93,6 +93,33 @@ A booking belongs to one user (guest)
 A booking is for one property
 
 A booking may have one payment associated
+# Feature Breakdown
+1. User Management
+This feature allows users to register, log in, and manage their profile information. It supports role-based access control, distinguishing between guests (who book properties) and hosts (who list properties). Authentication and authorization ensure secure access to user-specific actions.
+
+2. Property Management
+Hosts can create, update, and delete property listings. Each listing includes details such as title, description, price, location, and images. This feature is crucial for enabling the supply side of the platform where users can offer accommodations.
+
+3. Booking System
+Guests can browse listings and book properties for specific dates. The system checks availability, prevents double bookings, and calculates pricing based on the stay duration. This is the core transactional feature that connects guests with hosts.
+
+# API Security
+ 1. Authentication ; Verifying user identity using email/password or OAuth providers
+    Ensures that only legitimate users can access their accounts, protecting sensitive data like personal info, bookings, and payment details. Without secure authentication, attackers could easily impersonate users.
+ 2. Authorization ; Controlling what authenticated users are allowed to do (e.g., only hosts can create listings, only guests can book)
+    Prevents unauthorized actions like a user deleting someone else’s property or accessing admin-only features. Role-based permissions keep user actions within their boundaries.
+ 3. Rate Limiting ;Limiting the number of requests a user/IP can make to the server in a given timeframe.
+    Prevents abuse through brute-force attacks (e.g., trying thousands of passwords) or spamming endpoints. It also protects the platform from DDoS attacks that can degrade performance.
+
+# CI/CD Pipeline
+CI/CD stands for Continuous Integration and Continuous Deployment/Delivery.
+A CI/CD pipeline automates the process of building, testing, and deploying code, ensuring that new changes can be safely and quickly pushed to production.
+ Recommended Tools for CI/CD in this Project
+GitHub Actions	Automate workflows for testing, building, and deploying from your GitHub repository.
+Docker	Package the application into containers to ensure consistent environments across dev, test, and prod.
+Vercel / Netlify	For auto-deploying the frontend (e.g., Next.js) directly from GitHub.
+Render / Railway / Heroku	For hosting and auto-deploying the backend with support for CI pipelines.
+Jest / Cypress	For running unit and end-to-end tests automatically
  
 
 
